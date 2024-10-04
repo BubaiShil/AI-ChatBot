@@ -1,12 +1,32 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import main from './Components/AIservice'
 import './App.css'
 
 function App() {
 
+
+  const [response, setResponse] = useState('')
+  const [promt, setPromt] = useState('')
+
+
+  const handleSubmit=async(e)=>{
+      e.preventDefault()
+      try {
+        const res = await main(promt)
+        setResponse(res)
+      } catch (error) {
+        throw new Error("error");
+        
+      }
+  }
+
+  
+
   return (
     <>
+      {/* <div className='h-[100%] w-[100%] top-0 fixed bg-black z-99'></div> */}
       <div className="flex h-screen items-center justify-center bg-gray-200">
         
         <div className="flex flex-col w-full max-w-4xl h-[90vh] bg-white shadow-2xl rounded-lg overflow-hidden">
@@ -28,7 +48,7 @@ function App() {
             
             <div className="flex justify-start">
               <div className="bg-gray-300 text-gray-800 rounded-lg p-4">
-                I need some help setting up my project.
+                {response ? <h3>{response}</h3> : <p>Type something to get a response</p> }
               </div>
             </div>
           </div>
@@ -38,9 +58,11 @@ function App() {
             <input
               type="text"
               placeholder="Type a message..."
+              value={promt}
+              onChange={(e)=>setPromt(e.target.value)}
               className="flex-grow p-4 border border-[#9658d1] rounded-lg outline-none focus:border-[#6609bd]"
             />
-            <button className="ml-4 bg-[#6609bd] text-white px-6 py-3 rounded-lg hover:bg-[#9658d1]">
+            <button onClick={handleSubmit} className="ml-4 bg-[#6609bd] text-white px-6 py-3 rounded-lg hover:bg-[#9658d1]">
               Send
             </button>
           </div>

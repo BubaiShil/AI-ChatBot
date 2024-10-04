@@ -1,9 +1,11 @@
-import React from 'react'
+//import React from 'react'
 import {OpenAI} from 'openai'
 
 
 const baseURL = "https://api.aimlapi.com/v1";
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = import.meta.env.VITE_AI_API_KEY;
+//console.log(apiKey);
+
 const systemPrompt = "you are an assitant be freindly, short and factful";
 // const userPrompt = "Tell me about San Francisco";
 
@@ -27,7 +29,7 @@ const main = async (ask) => {
       },
     ],
     temperature: 0.7,   // ranges in between 0 to 1
-    max_tokens: 256,    // word limit of the response
+    max_tokens: 500,    // word limit of the response
   });
 
   const response = completion.choices[0].message.content;
