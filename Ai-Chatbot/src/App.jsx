@@ -20,6 +20,7 @@ function App() {
         throw new Error("error");
         
       }
+      setPromt('')
   }
 
   
