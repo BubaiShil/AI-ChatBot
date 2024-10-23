@@ -33,7 +33,7 @@ function App() {
         <div className="flex flex-col w-full max-w-4xl h-[90vh] bg-white shadow-2xl rounded-lg overflow-hidden">
           
           <div className="flex items-center justify-between p-6 bg-[#6609bd] text-white">
-            <h1 className="text-xl font-semibold">AI Chatbot</h1>
+            <h1 className="text-xl font-semibold">AI ChatApp</h1>
             <span className="text-sm">Online</span>
           </div>
 
